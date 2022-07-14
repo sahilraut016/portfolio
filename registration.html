@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Regristration Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3" id="form">
+                <center><b class="registration">Regristration Form</b></center>
+                <form action="#" onsubmit="return validation()" class="bg-light">
+
+                    <div class="form-group">
+                        <label>Username:</label>
+                        <input type="text" name="user" class="form-control text" placeholder="Enter Username" autocomplete="off" id="user">
+                        <span id="username" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-Mail:</label>
+                        <input type="email" name="email" class="form-control text" placeholder="Enter E-Mail" autocomplete="off" id="emails">
+                        <span id="emailids" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mobile NO:</label>
+                        <input type="number" name="Mobile" class="form-control text" placeholder="Enter Mobile NO." autocomplete="off" id="mobileno">
+                        <span id="mobilenumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Gender:</label>
+                        <select class="form-control text">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" name="pass" class="form-control text" placeholder="Enter Password" autocomplete="off" id="pass">
+                        <span id="password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Re-type Password:</label>
+                        <input type="password" name="re-pass" class="form-control text" placeholder="Enter Re-type Password" autocomplete="off" id="repass">
+                        <span id="repassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address:</label><br>
+                        <label>Street:</label>
+                        <input type="text" name="name" class="form-control text" placeholder="Enter Street" autocomplete="off" id="street">
+                        <span id="streets" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        function validation() {
+            var user = document.getElementById('user').value;
+            var email = document.getElementById('emails').value;
+            var mobile = document.getElementById('mobileno').value;
+            var password = document.getElementById('pass').value;
+            var repassword = document.getElementById('repass').value;
+            var street = document.getElementById('street').value;
+
+            if (user == "") {
+                document.getElementById('username').innerHTML = "Please fill the username";
+                return false;
+            }
+
+            if ((user.length <= 2) || (user.length > 20)) {
+                document.getElementById('username').innerHTML = "User length must be between 2 and 20";
+                return false;
+            }
+
+            if (!isNaN(user)) {
+                document.getElementById('username').innerHTML = "Only characters are allowed";
+                return false;
+
+            }
+
+            if (email == "") {
+                document.getElementById('emailids').innerHTML = "Please fill the Email-id";
+                return false;
+            }
+
+            if (email.indexOf('@') <= 0) {
+                document.getElementById('emailids').innerHTML = "@ Invaild position";
+                return false;
+            }
+
+            if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
+                document.getElementById('emailids').innerHTML = ". Invaild position";
+                return false;
+            }
+
+            if (mobile == "") {
+                document.getElementById('mobilenumber').innerHTML = "Please fill the Mobile No.";
+                return false;
+            }
+
+            if (isNaN(mobile)) {
+                document.getElementById('mobilenumber').innerHTML = "User must write digits only not characters";
+                return false;
+            }
+
+            if (mobile.length != 10) {
+                document.getElementById('mobilenumber').innerHTML = "Moile number must be 10 digits only";
+                return false;
+            }
+
+            if (password == "") {
+                document.getElementById('password').innerHTML = "Please fill the Password";
+                return false;
+            }
+
+            if ((password.length <= 8) || (password.length > 20)) {
+                document.getElementById('password').innerHTML = "Password length must be between 8 and 20";
+                return false;
+            }
+
+            if (repassword == "") {
+                document.getElementById('repassword').innerHTML = "Please fill the Re-type password";
+                return false;
+            }
+
+            if (repassword != password) {
+                document.getElementById('repassword').innerHTML = "Password are not matching";
+                return false;
+
+            }
+
+            if (street == "") {
+                document.getElementById('streets').innerHTML = "Please fill the Street";
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
